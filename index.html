@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>시음노트 인기 랭킹</title>
     <link rel="stylesheet" href="./style.css" />
+    <script src="./notes-data.js" defer></script>
   </head>
   <body>
     <div class="rank-shell">
       <main class="rank-scene" aria-label="시음노트 인기 랭킹 페이지">
         <header class="rank-header">
           <div class="rank-title-wrap">
-            <p class="rank-kicker">Wine note ranking</p>
+            <p class="rank-kicker">국내 사용자 기준 인기 순위</p>
             <h1 class="rank-title">시음노트 인기 랭킹</h1>
           </div>
-          <span class="rank-badge">이번 주</span>
+          <span class="rank-badge" id="period-badge">이번 주</span>
         </header>
 
         <div class="rank-body">
@@ -23,7 +24,7 @@
               <p class="rank-summary-label">랭킹 기준</p>
               <span class="chip">조회 + 좋아요 + 저장 + 댓글</span>
             </div>
-            <p class="rank-summary-copy">최근 반응을 더 크게 반영해서 지금 가장 많이 읽히는 노트를 보여줍니다.</p>
+            <p class="rank-summary-copy">최근 반응을 더 크게 반영해서 지금 많이 읽히는 노트를 보여줍니다.</p>
             <div class="rank-stats">
               <div class="rank-stat">
                 <strong class="rank-stat-value">10</strong>
@@ -41,19 +42,19 @@
           </section>
 
           <nav class="rank-tabs" aria-label="랭킹 기간">
-            <button class="rank-tab is-active" type="button">전체</button>
-            <button class="rank-tab" type="button">이번 주</button>
-            <button class="rank-tab" type="button">이번 달</button>
+            <button class="rank-tab is-active" type="button" data-filter="all">전체</button>
+            <button class="rank-tab" type="button" data-filter="week">주간</button>
+            <button class="rank-tab" type="button" data-filter="month">월간</button>
           </nav>
 
           <section aria-label="상위 랭킹 목록">
             <div class="rank-section-head">
               <h2 class="rank-section-title">TOP 10</h2>
-              <p class="rank-section-note">스크롤하며 더 볼 수 있음</p>
+              <p class="rank-section-note" id="rank-count">10개 노트</p>
             </div>
 
-            <ol class="rank-list">
-              <li class="rank-item">
+            <ol class="rank-list" id="rank-list">
+              <li class="rank-item" data-note-id="1" data-periods="week month all">
                 <div class="rank-number">1</div>
                 <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Champagne_Leclerc_Briant_Abyss.jpg/330px-Champagne_Leclerc_Briant_Abyss.jpg" alt="" />
@@ -79,7 +80,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="2" data-periods="week month all">
                 <div class="rank-number">2</div>
                 <div class="rank-thumb rank-thumb--rose" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Cuv%C3%A9e_Ros%C3%A9_de_Saign%C3%A9e.jpg/330px-Cuv%C3%A9e_Ros%C3%A9_de_Saign%C3%A9e.jpg" alt="" />
@@ -105,7 +106,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="3" data-periods="week month all">
                 <div class="rank-number">3</div>
                 <div class="rank-thumb rank-thumb--red" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Bottle_and_glass_of_Barefoot_white_zinfandel_wine%2C_2012.jpg/330px-Bottle_and_glass_of_Barefoot_white_zinfandel_wine%2C_2012.jpg" alt="" />
@@ -131,7 +132,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="4" data-periods="week month all">
                 <div class="rank-number">4</div>
                 <div class="rank-thumb" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/WineBottles_20230715_191850.jpg/330px-WineBottles_20230715_191850.jpg" alt="" />
@@ -157,7 +158,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="5" data-periods="month all">
                 <div class="rank-number">5</div>
                 <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Champagne_bottle%2C_2015-%2801%29.jpg/330px-Champagne_bottle%2C_2015-%2801%29.jpg" alt="" />
@@ -183,7 +184,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="6" data-periods="month all">
                 <div class="rank-number">6</div>
                 <div class="rank-thumb rank-thumb--rose" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Schramsberg_Vineyards%2C_July_2019-7563%2B7565.jpg/330px-Schramsberg_Vineyards%2C_July_2019-7563%2B7565.jpg" alt="" />
@@ -209,7 +210,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="7" data-periods="month all">
                 <div class="rank-number">7</div>
                 <div class="rank-thumb rank-thumb--red" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/2020_10_10_016_Tour_de_Vin.jpg/330px-2020_10_10_016_Tour_de_Vin.jpg" alt="" />
@@ -235,7 +236,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="8" data-periods="all">
                 <div class="rank-number">8</div>
                 <div class="rank-thumb" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Wine_Bottle_MET_62455.jpg/330px-Wine_Bottle_MET_62455.jpg" alt="" />
@@ -261,7 +262,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="9" data-periods="all">
                 <div class="rank-number">9</div>
                 <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Tsimlyansk_wines%2C_Wine_bottles%2C_Rostov-on-Don%2C_Russia.jpg/330px-Tsimlyansk_wines%2C_Wine_bottles%2C_Rostov-on-Don%2C_Russia.jpg" alt="" />
@@ -287,7 +288,7 @@
                 </div>
               </li>
 
-              <li class="rank-item">
+              <li class="rank-item" data-note-id="10" data-periods="all">
                 <div class="rank-number">10</div>
                 <div class="rank-thumb rank-thumb--red" aria-hidden="true">
                   <img class="rank-photo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Wine_Bottle_MET_ADA4147.jpg/330px-Wine_Bottle_MET_ADA4147.jpg" alt="" />
@@ -317,10 +318,60 @@
         </div>
 
         <footer class="rank-footer">
-          <p class="rank-note-inline">상위 3개가 첫 화면에서 바로 보이도록 구조를 잡았습니다.</p>
-          <button class="rank-cta" type="button">시음노트 작성</button>
+          <p class="rank-note-inline">상위 3개가 첫 화면에서 바로 보이도록 구성했습니다.</p>
+          <a class="rank-cta" href="./detail.html?id=1">시음노트 작성</a>
         </footer>
       </main>
     </div>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".rank-tab"));
+      const badge = document.getElementById("period-badge");
+      const list = document.getElementById("rank-list");
+      const count = document.getElementById("rank-count");
+      const items = Array.from(document.querySelectorAll(".rank-item"));
+
+      const labels = {
+        all: "전체",
+        week: "이번 주",
+        month: "이번 달",
+      };
+
+      const applyFilter = (filter) => {
+        tabs.forEach((tab) => tab.classList.toggle("is-active", tab.dataset.filter === filter));
+
+        let visibleCount = 0;
+        items.forEach((item) => {
+          const periods = item.dataset.periods.split(" ");
+          const visible = filter === "all" || periods.includes(filter);
+          item.hidden = !visible;
+          item.classList.toggle("is-hidden", !visible);
+          if (visible) visibleCount += 1;
+        });
+
+        badge.textContent = labels[filter] || "전체";
+        count.textContent = `${visibleCount}개 노트`;
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => applyFilter(tab.dataset.filter));
+      });
+
+      items.forEach((item) => {
+        item.tabIndex = 0;
+        item.setAttribute("role", "link");
+        item.addEventListener("click", () => {
+          location.href = `./detail.html?id=${item.dataset.noteId}`;
+        });
+        item.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            location.href = `./detail.html?id=${item.dataset.noteId}`;
+          }
+        });
+      });
+
+      applyFilter("week");
+    </script>
   </body>
 </html>

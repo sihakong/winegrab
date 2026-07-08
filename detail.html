@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>시음노트 상세</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./notes-data.js" defer></script>
+  </head>
+  <body>
+    <div class="rank-detail-shell">
+      <main class="rank-detail-scene" aria-label="시음노트 상세 페이지">
+        <section class="detail-hero">
+          <div class="detail-topline">
+            <a class="detail-back" href="./index.html">← 랭킹으로</a>
+            <span class="rank-badge" id="detail-rank">TOP 1</span>
+          </div>
+
+          <div class="detail-cover">
+            <img id="detail-image" alt="" />
+          </div>
+
+          <div class="detail-meta-grid">
+            <p class="detail-kicker" id="detail-kicker">Wine note detail</p>
+            <h1 class="detail-title" id="detail-title">시음노트 제목</h1>
+            <p class="detail-summary" id="detail-summary"></p>
+            <div class="rank-meta" id="detail-pills"></div>
+          </div>
+
+          <div class="detail-stat-row" id="detail-stats"></div>
+        </section>
+
+        <section class="detail-section">
+          <h2 class="detail-section-title">테이스팅 포인트</h2>
+          <ul class="detail-list" id="detail-tasting"></ul>
+        </section>
+
+        <section class="detail-section">
+          <h2 class="detail-section-title">이 노트가 반응을 받은 이유</h2>
+          <ul class="detail-list" id="detail-reasons"></ul>
+        </section>
+
+        <section class="detail-section">
+          <h2 class="detail-section-title">비슷한 노트</h2>
+          <div class="detail-related" id="detail-related"></div>
+        </section>
+
+        <footer class="detail-footer">
+          <a class="rank-cta" href="./index.html">랭킹 목록으로</a>
+          <a class="rank-cta" id="detail-next" href="./index.html">다음 노트 보기</a>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const params = new URLSearchParams(location.search);
+      const noteId = Number(params.get("id") || "1");
+      const notes = window.WINE_NOTES || [];
+      const note = notes.find((entry) => entry.id === noteId) || notes[0];
+      const detailRank = document.getElementById("detail-rank");
+      const detailImage = document.getElementById("detail-image");
+      const detailKicker = document.getElementById("detail-kicker");
+      const detailTitle = document.getElementById("detail-title");
+      const detailSummary = document.getElementById("detail-summary");
+      const detailPills = document.getElementById("detail-pills");
+      const detailStats = document.getElementById("detail-stats");
+      const detailTasting = document.getElementById("detail-tasting");
+      const detailReasons = document.getElementById("detail-reasons");
+      const detailRelated = document.getElementById("detail-related");
+      const detailNext = document.getElementById("detail-next");
+
+      const starText = "★".repeat(4) + "½";
+
+      document.title = `${note.title} · 시음노트 상세`;
+      detailRank.textContent = `TOP ${note.id}`;
+      detailImage.src = note.image;
+      detailImage.alt = note.title;
+      detailKicker.textContent = `${note.author} · ${note.style} · ${note.region}`;
+      detailTitle.textContent = note.title;
+      detailSummary.textContent = note.description;
+
+      detailPills.innerHTML = `
+        <span class="rank-pill">${note.author}</span>
+        <span class="rank-pill">${note.style}</span>
+        <span class="rank-pill">${note.region}</span>
+        <span class="rank-pill">${note.note}</span>
+      `;
+
+      detailStats.innerHTML = `
+        <div class="rank-stat"><strong class="rank-stat-value">${note.score}</strong><span class="rank-stat-label">랭킹 점수</span></div>
+        <div class="rank-stat"><strong class="rank-stat-value">${note.views}</strong><span class="rank-stat-label">조회</span></div>
+        <div class="rank-stat"><strong class="rank-stat-value">${note.likes}</strong><span class="rank-stat-label">좋아요</span></div>
+        <div class="rank-stat"><strong class="rank-stat-value">${starText}</strong><span class="rank-stat-label">사용자 반응</span></div>
+      `;
+
+      detailTasting.innerHTML = note.tasting
+        .map((item) => `<li><span>${item}</span><span>테이스팅 키워드</span></li>`)
+        .join("");
+
+      detailReasons.innerHTML = [
+        `짧은 문장으로 핵심이 먼저 보인다.`,
+        `국내 사용자에게 익숙한 표현으로 정리되어 있다.`,
+        `저장과 댓글이 같이 붙어 랭킹 가중치가 높다.`,
+        `카드 미리보기에서 바로 클릭하고 싶게 만든다.`,
+      ]
+        .map((item, index) => `<li><span>${index + 1}</span><span>${item}</span></li>`)
+        .join("");
+
+      const related = notes
+        .filter((entry) => entry.id !== note.id)
+        .slice(0, 3);
+
+      detailRelated.innerHTML = related
+        .map(
+          (entry) => `
+            <a class="detail-related-card" href="./detail.html?id=${entry.id}">
+              <img src="${entry.image}" alt="${entry.title}" />
+              <div>
+                <p class="detail-related-title">${entry.title}</p>
+                <p class="detail-related-meta">${entry.author} · ${entry.style} · ${entry.score}</p>
+                <p class="detail-related-meta">${entry.body}</p>
+              </div>
+            </a>
+          `
+        )
+        .join("");
+
+      detailNext.href = `./detail.html?id=${note.id === notes.length ? 1 : note.id + 1}`;
+      detailNext.textContent = "다음 노트 보기";
+    </script>
+  </body>
+</html>
