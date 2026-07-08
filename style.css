@@ -410,33 +410,37 @@ body {
 }
 
 .rank-quick {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   gap: var(--space-2);
+  overflow-x: auto;
+  padding: 2px 0 6px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
 
 .rank-quick-item {
   appearance: none;
   border: 1px solid var(--color-line-soft);
-  width: 100%;
-  text-align: left;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-3);
-  border-radius: 12px;
-  background: var(--color-bg);
+  flex: 0 0 auto;
+  min-width: 120px;
+  height: 50px;
+  padding: 0 16px 0 12px;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(180deg, var(--color-bg), #fbfbfb);
   color: var(--color-ink);
   cursor: pointer;
-  box-shadow: none;
+  box-shadow: 0 6px 16px rgba(23, 23, 25, 0.04);
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background-color 120ms ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  scroll-snap-align: start;
 }
 
 .rank-quick-item:hover {
   transform: translateY(-1px);
-  border-color: rgba(255, 212, 0, 0.32);
-  box-shadow: 0 10px 20px rgba(23, 23, 25, 0.05);
+  border-color: rgba(255, 212, 0, 0.42);
+  box-shadow: 0 10px 20px rgba(23, 23, 25, 0.06);
 }
 
 .rank-quick-item:focus-visible {
@@ -448,10 +452,14 @@ body {
   transform: translateY(0);
 }
 
+.rank-quick::-webkit-scrollbar {
+  display: none;
+}
+
 .rank-quick-icon {
   width: 30px;
   height: 30px;
-  border-radius: 10px;
+  border-radius: 50%;
   display: grid;
   place-items: center;
   background: var(--color-point-soft);
@@ -459,19 +467,7 @@ body {
   font-size: 16px;
 }
 
-.rank-quick-text {
-  display: grid;
-  gap: 2px;
-}
-
-.rank-quick-label {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.4;
-  color: var(--color-faint);
-}
-
-.rank-quick-value {
+.rank-quick-pill {
   margin: 0;
   font-size: 13px;
   line-height: 1.4;
@@ -1025,7 +1021,7 @@ body {
   }
 
   .rank-quick {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding-left: 0;
   }
 
   .rank-item {
