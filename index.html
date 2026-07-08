@@ -3,30 +3,363 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>공 튀기기</title>
+    <title>시음노트 인기 랭킹</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="shell">
-      <main class="scene" aria-label="공이 바닥에서 튀는 애니메이션">
-        <div class="header">
-          <h1 class="title">공 튀기기</h1>
-          <span class="badge">emart prototype</span>
-        </div>
-        <div class="body">
-          <p class="description">이마트 디자인 시스템 기준으로 만든 아주 단순한 실습 화면입니다.</p>
-          <div class="stage">
-            <div class="floor" aria-hidden="true"></div>
-            <div class="ball-wrap" aria-hidden="true">
-              <div class="shadow"></div>
-              <div class="ball"></div>
-            </div>
+    <div class="rank-shell">
+      <main class="rank-scene" aria-label="시음노트 인기 랭킹 페이지">
+        <header class="rank-header">
+          <div class="rank-title-wrap">
+            <p class="rank-kicker">Wine note ranking</p>
+            <h1 class="rank-title">시음노트 인기 랭킹</h1>
           </div>
+          <span class="rank-badge">이번 주</span>
+        </header>
+
+        <div class="rank-body">
+          <section class="rank-summary" aria-label="랭킹 요약">
+            <div class="rank-summary-head">
+              <p class="rank-summary-label">랭킹 기준</p>
+              <span class="chip">조회 + 좋아요 + 저장 + 댓글</span>
+            </div>
+            <p class="rank-summary-copy">최근 반응을 더 크게 반영해서 지금 가장 많이 읽히는 노트를 보여줍니다.</p>
+            <div class="rank-stats">
+              <div class="rank-stat">
+                <strong class="rank-stat-value">10</strong>
+                <span class="rank-stat-label">상위 노트</span>
+              </div>
+              <div class="rank-stat">
+                <strong class="rank-stat-value">24h</strong>
+                <span class="rank-stat-label">최근 반응 가중</span>
+              </div>
+              <div class="rank-stat">
+                <strong class="rank-stat-value">4.8</strong>
+                <span class="rank-stat-label">평균 평점</span>
+              </div>
+            </div>
+          </section>
+
+          <nav class="rank-tabs" aria-label="랭킹 기간">
+            <button class="rank-tab is-active" type="button">전체</button>
+            <button class="rank-tab" type="button">이번 주</button>
+            <button class="rank-tab" type="button">이번 달</button>
+          </nav>
+
+          <section aria-label="상위 랭킹 목록">
+            <div class="rank-section-head">
+              <h2 class="rank-section-title">TOP 10</h2>
+              <p class="rank-section-note">스크롤하며 더 볼 수 있음</p>
+            </div>
+
+            <ol class="rank-list">
+              <li class="rank-item">
+                <div class="rank-number">1</div>
+                <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.16" />
+                    <path d="M33 16h14v8c0 4 6 6 6 16v14c0 8-5 12-13 12s-13-4-13-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.95" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">샴페인 블랑 드 블랑</p>
+                    <span class="rank-score">98.7</span>
+                  </div>
+                  <p class="rank-note">드라이한 산미와 섬세한 버블이 깔끔하게 이어지는 노트. 해산물 페어링 추천.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">지민</span>
+                    <span class="rank-pill">Sparkling</span>
+                    <span class="rank-pill">도수 12%</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 8.2k</span>
+                    <span class="rank-metric">좋아요 312</span>
+                    <span class="rank-metric">저장 128</span>
+                    <span class="rank-metric rank-metric--up">댓글 +41</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">2</div>
+                <div class="rank-thumb rank-thumb--rose" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.16" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.9" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">프로방스 로제</p>
+                    <span class="rank-score">97.9</span>
+                  </div>
+                  <p class="rank-note">딸기와 허브 뉘앙스가 가볍고 상큼하게 흐르는 노트. 여름용 입문 추천.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">수아</span>
+                    <span class="rank-pill">Rosé</span>
+                    <span class="rank-pill">가벼운 바디</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 7.4k</span>
+                    <span class="rank-metric">좋아요 281</span>
+                    <span class="rank-metric">저장 102</span>
+                    <span class="rank-metric rank-metric--up">댓글 +35</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">3</div>
+                <div class="rank-thumb rank-thumb--red" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.14" />
+                    <path d="M33 16h14v8c0 4 6 6 6 16v14c0 8-5 12-13 12s-13-4-13-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.86" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">피노 누아르 리저브</p>
+                    <span class="rank-score">96.8</span>
+                  </div>
+                  <p class="rank-note">체리, 버섯, 흙내음이 균형 있게 이어지는 노트. 문장 정리가 좋아 읽기 편함.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">현우</span>
+                    <span class="rank-pill">Red</span>
+                    <span class="rank-pill">미디엄 바디</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 6.6k</span>
+                    <span class="rank-metric">좋아요 244</span>
+                    <span class="rank-metric">저장 96</span>
+                    <span class="rank-metric rank-metric--up">댓글 +29</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">4</div>
+                <div class="rank-thumb" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.12" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.78" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">소비뇽 블랑</p>
+                    <span class="rank-score">95.2</span>
+                  </div>
+                  <p class="rank-note">허브, 라임, 자몽 향이 선명한 산뜻한 노트. 바디가 가벼워 초보자 반응이 좋음.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">서연</span>
+                    <span class="rank-pill">White</span>
+                    <span class="rank-pill">산뜻함</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 5.9k</span>
+                    <span class="rank-metric">좋아요 211</span>
+                    <span class="rank-metric">저장 88</span>
+                    <span class="rank-metric">댓글 +22</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">5</div>
+                <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.16" />
+                    <path d="M33 16h14v8c0 4 6 6 6 16v14c0 8-5 12-13 12s-13-4-13-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.93" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">브뤼 나뚜르</p>
+                    <span class="rank-score">94.9</span>
+                  </div>
+                  <p class="rank-note">브리오슈와 사과 향이 또렷하고 마무리가 정돈된 노트. 깔끔한 요약이 장점.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">민재</span>
+                    <span class="rank-pill">Sparkling</span>
+                    <span class="rank-pill">드라이</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 5.4k</span>
+                    <span class="rank-metric">좋아요 198</span>
+                    <span class="rank-metric">저장 77</span>
+                    <span class="rank-metric">댓글 +18</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">6</div>
+                <div class="rank-thumb rank-thumb--rose" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.15" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.88" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">비오니에 블렌드</p>
+                    <span class="rank-score">94.1</span>
+                  </div>
+                  <p class="rank-note">살구와 꽃향이 살아 있는 노트. 향 묘사가 좋아서 저장 전환율이 높음.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">지우</span>
+                    <span class="rank-pill">White Blend</span>
+                    <span class="rank-pill">향 중심</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 4.8k</span>
+                    <span class="rank-metric">좋아요 177</span>
+                    <span class="rank-metric">저장 70</span>
+                    <span class="rank-metric">댓글 +16</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">7</div>
+                <div class="rank-thumb rank-thumb--red" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.13" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.84" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">말벡 클래식</p>
+                    <span class="rank-score">93.6</span>
+                  </div>
+                  <p class="rank-note">블랙베리와 코코아 톤이 선명한 노트. 첫 문단이 짧아서 모바일 가독성이 좋음.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">도현</span>
+                    <span class="rank-pill">Red</span>
+                    <span class="rank-pill">진한 과실</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 4.4k</span>
+                    <span class="rank-metric">좋아요 161</span>
+                    <span class="rank-metric">저장 61</span>
+                    <span class="rank-metric">댓글 +13</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">8</div>
+                <div class="rank-thumb" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.12" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.76" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">샤르도네 오크 숙성</p>
+                    <span class="rank-score">93.0</span>
+                  </div>
+                  <p class="rank-note">바닐라, 토스트, 배 향이 밸런스 있게 정리된 노트. 요약형 문장 구조가 안정적.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">유진</span>
+                    <span class="rank-pill">White</span>
+                    <span class="rank-pill">오크감</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 4.1k</span>
+                    <span class="rank-metric">좋아요 153</span>
+                    <span class="rank-metric">저장 59</span>
+                    <span class="rank-metric">댓글 +12</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">9</div>
+                <div class="rank-thumb rank-thumb--sparkling" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.15" />
+                    <path d="M33 16h14v8c0 4 6 6 6 16v14c0 8-5 12-13 12s-13-4-13-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.9" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">크레망 드 부르고뉴</p>
+                    <span class="rank-score">92.4</span>
+                  </div>
+                  <p class="rank-note">견과류와 시트러스가 교차하는 고전적인 노트. 댓글이 꾸준히 붙는 타입.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">민서</span>
+                    <span class="rank-pill">Sparkling</span>
+                    <span class="rank-pill">산도 좋음</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 3.9k</span>
+                    <span class="rank-metric">좋아요 142</span>
+                    <span class="rank-metric">저장 53</span>
+                    <span class="rank-metric">댓글 +11</span>
+                  </div>
+                </div>
+              </li>
+
+              <li class="rank-item">
+                <div class="rank-number">10</div>
+                <div class="rank-thumb rank-thumb--red" aria-hidden="true">
+                  <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="17" y="12" width="46" height="56" rx="14" fill="currentColor" opacity="0.13" />
+                    <path d="M34 16h12v8c0 4 6 6 6 16v14c0 8-5 12-12 12s-12-4-12-12V40c0-10 6-12 6-16v-8Z" fill="currentColor" opacity="0.82" />
+                    <rect x="29" y="25" width="22" height="29" rx="8" fill="var(--color-point-soft)" />
+                    <circle cx="60" cy="24" r="4" fill="currentColor" />
+                  </svg>
+                </div>
+                <div class="rank-content">
+                  <div class="rank-topline">
+                    <p class="rank-wine">카베르네 소비뇽</p>
+                    <span class="rank-score">91.8</span>
+                  </div>
+                  <p class="rank-note">블랙커런트와 시더 톤이 정갈한 노트. 상위권 진입 직전의 성장형 콘텐츠.</p>
+                  <div class="rank-meta">
+                    <span class="rank-pill">태오</span>
+                    <span class="rank-pill">Red</span>
+                    <span class="rank-pill">구조감</span>
+                  </div>
+                  <div class="rank-metrics">
+                    <span class="rank-metric">조회 3.6k</span>
+                    <span class="rank-metric">좋아요 131</span>
+                    <span class="rank-metric">저장 48</span>
+                    <span class="rank-metric">댓글 +9</span>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </section>
         </div>
-        <div class="footer">
-          <p class="hint">정적 HTML + CSS만으로 바로 배포 가능</p>
-          <span class="chip">Pretendard / 22px / 12px radius</span>
-        </div>
+
+        <footer class="rank-footer">
+          <p class="rank-note-inline">상위 3개가 첫 화면에서 바로 보이도록 구조를 잡았습니다.</p>
+          <button class="rank-cta" type="button">시음노트 작성</button>
+        </footer>
       </main>
     </div>
   </body>
