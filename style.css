@@ -409,6 +409,30 @@ body {
   max-width: 30ch;
 }
 
+.rank-hero-badge {
+  flex: 0 0 auto;
+  display: grid;
+  gap: 4px;
+  min-width: 96px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 212, 0, 0.22);
+  box-shadow: 0 10px 18px rgba(23, 23, 25, 0.04);
+}
+
+.rank-hero-badge-label {
+  font-size: 11px;
+  line-height: 1;
+  color: var(--color-faint);
+}
+
+.rank-hero-badge-value {
+  font-size: 13px;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
 .rank-quick {
   display: flex;
   gap: var(--space-2);
@@ -422,14 +446,14 @@ body {
   appearance: none;
   border: 1px solid var(--color-line-soft);
   flex: 0 0 auto;
-  min-width: 120px;
-  height: 50px;
-  padding: 0 16px 0 12px;
+  min-width: 116px;
+  height: 48px;
+  padding: 0 14px 0 10px;
   border-radius: var(--radius-pill);
   background: linear-gradient(180deg, var(--color-bg), #fbfbfb);
   color: var(--color-ink);
   cursor: pointer;
-  box-shadow: 0 6px 16px rgba(23, 23, 25, 0.04);
+  box-shadow: 0 8px 18px rgba(23, 23, 25, 0.05);
   transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background-color 120ms ease;
   display: inline-flex;
   align-items: center;
@@ -457,20 +481,20 @@ body {
 }
 
 .rank-quick-icon {
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: var(--color-point-soft);
   color: var(--color-ink);
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .rank-quick-pill {
   margin: 0;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 12px;
+  line-height: 1.2;
   font-weight: 700;
   color: var(--color-ink);
 }
@@ -1022,6 +1046,16 @@ body {
 
   .rank-quick {
     padding-left: 0;
+  }
+
+  .rank-hero-topline {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .rank-hero-badge {
+    min-width: 0;
+    width: fit-content;
   }
 
   .rank-item {
