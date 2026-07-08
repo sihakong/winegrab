@@ -31,17 +31,26 @@
         </section>
 
         <section class="detail-section">
-          <h2 class="detail-section-title">테이스팅 포인트</h2>
+          <div class="rank-section-head">
+            <h2 class="detail-section-title">테이스팅 포인트</h2>
+            <p class="rank-section-note">읽는 순서대로 정리</p>
+          </div>
           <ul class="detail-list" id="detail-tasting"></ul>
         </section>
 
         <section class="detail-section">
-          <h2 class="detail-section-title">이 노트가 반응을 받은 이유</h2>
+          <div class="rank-section-head">
+            <h2 class="detail-section-title">이 노트가 반응을 받은 이유</h2>
+            <p class="rank-section-note">랭킹 가중치 설명</p>
+          </div>
           <ul class="detail-list" id="detail-reasons"></ul>
         </section>
 
         <section class="detail-section">
-          <h2 class="detail-section-title">비슷한 노트</h2>
+          <div class="rank-section-head">
+            <h2 class="detail-section-title">비슷한 노트</h2>
+            <p class="rank-section-note">연결 탐색</p>
+          </div>
           <div class="detail-related" id="detail-related"></div>
         </section>
 
@@ -69,8 +78,6 @@
       const detailRelated = document.getElementById("detail-related");
       const detailNext = document.getElementById("detail-next");
 
-      const starText = "★".repeat(4) + "½";
-
       document.title = `${note.title} · 시음노트 상세`;
       detailRank.textContent = `TOP ${note.id}`;
       detailImage.src = note.image;
@@ -90,7 +97,7 @@
         <div class="rank-stat"><strong class="rank-stat-value">${note.score}</strong><span class="rank-stat-label">랭킹 점수</span></div>
         <div class="rank-stat"><strong class="rank-stat-value">${note.views}</strong><span class="rank-stat-label">조회</span></div>
         <div class="rank-stat"><strong class="rank-stat-value">${note.likes}</strong><span class="rank-stat-label">좋아요</span></div>
-        <div class="rank-stat"><strong class="rank-stat-value">${starText}</strong><span class="rank-stat-label">사용자 반응</span></div>
+        <div class="rank-stat"><strong class="rank-stat-value">${note.comments}</strong><span class="rank-stat-label">댓글 반응</span></div>
       `;
 
       detailTasting.innerHTML = note.tasting
