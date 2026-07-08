@@ -416,12 +416,36 @@ body {
 }
 
 .rank-quick-item {
+  appearance: none;
+  border: 1px solid var(--color-line-soft);
+  width: 100%;
+  text-align: left;
   display: grid;
-  gap: 6px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--space-3);
   padding: var(--space-3);
   border-radius: 12px;
   background: var(--color-bg);
-  border: 1px solid var(--color-line-soft);
+  color: var(--color-ink);
+  cursor: pointer;
+  box-shadow: none;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease, background-color 120ms ease;
+}
+
+.rank-quick-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 212, 0, 0.32);
+  box-shadow: 0 10px 20px rgba(23, 23, 25, 0.05);
+}
+
+.rank-quick-item:focus-visible {
+  outline: 2px solid rgba(255, 212, 0, 0.9);
+  outline-offset: 2px;
+}
+
+.rank-quick-item:active {
+  transform: translateY(0);
 }
 
 .rank-quick-icon {
@@ -433,6 +457,11 @@ body {
   background: var(--color-point-soft);
   color: var(--color-ink);
   font-size: 16px;
+}
+
+.rank-quick-text {
+  display: grid;
+  gap: 2px;
 }
 
 .rank-quick-label {

@@ -30,26 +30,34 @@
             </div>
 
             <div class="rank-quick" aria-label="빠른 메뉴">
-              <div class="rank-quick-item">
-                <span class="rank-quick-icon">🍷</span>
-                <p class="rank-quick-label">인기 스타일</p>
-                <p class="rank-quick-value">레드 / 화이트</p>
-              </div>
-              <div class="rank-quick-item">
+              <button class="rank-quick-item" type="button" data-quick="week">
+                <span class="rank-quick-icon">🔥</span>
+                <span class="rank-quick-text">
+                  <span class="rank-quick-label">주간 랭킹</span>
+                  <span class="rank-quick-value">지금 가장 많이 읽는 글</span>
+                </span>
+              </button>
+              <button class="rank-quick-item" type="button" data-quick="month">
                 <span class="rank-quick-icon">⭐</span>
-                <p class="rank-quick-label">반응 높은 글</p>
-                <p class="rank-quick-value">저장 많은 순</p>
-              </div>
-              <div class="rank-quick-item">
-                <span class="rank-quick-icon">⏱</span>
-                <p class="rank-quick-label">최근 업뎃</p>
-                <p class="rank-quick-value">24시간 기준</p>
-              </div>
-              <div class="rank-quick-item">
-                <span class="rank-quick-icon">🔎</span>
-                <p class="rank-quick-label">탐색</p>
-                <p class="rank-quick-value">상세 바로가기</p>
-              </div>
+                <span class="rank-quick-text">
+                  <span class="rank-quick-label">월간 랭킹</span>
+                  <span class="rank-quick-value">꾸준히 반응 좋은 글</span>
+                </span>
+              </button>
+              <button class="rank-quick-item" type="button" data-quick="detail">
+                <span class="rank-quick-icon">📄</span>
+                <span class="rank-quick-text">
+                  <span class="rank-quick-label">상세 보기</span>
+                  <span class="rank-quick-value">첫 번째 노트로 이동</span>
+                </span>
+              </button>
+              <button class="rank-quick-item" type="button" data-quick="write">
+                <span class="rank-quick-icon">✍</span>
+                <span class="rank-quick-text">
+                  <span class="rank-quick-label">노트 작성</span>
+                  <span class="rank-quick-value">바로 기록 시작</span>
+                </span>
+              </button>
             </div>
           </section>
 
@@ -401,6 +409,29 @@
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             location.href = `./detail.html?id=${item.dataset.noteId}`;
+          }
+        });
+      });
+
+      document.querySelectorAll("[data-quick]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.dataset.quick;
+          if (action === "week") {
+            document.querySelector('[data-filter="week"]').click();
+            document.getElementById("rank-list").scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
+          }
+          if (action === "month") {
+            document.querySelector('[data-filter="month"]').click();
+            document.getElementById("rank-list").scrollIntoView({ behavior: "smooth", block: "start" });
+            return;
+          }
+          if (action === "detail") {
+            location.href = "./detail.html?id=1";
+            return;
+          }
+          if (action === "write") {
+            location.href = "./detail.html?id=1";
           }
         });
       });
